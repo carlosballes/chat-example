@@ -20,7 +20,7 @@
     <form id="form" action="">
       <input id="input" autocomplete="off" /><button>Send</button>
     </form>
-    <button id="boton">Close1</button>
+    <button id="boton">Close2</button>
     <script src="/socket.io/socket.io.js"></script>
 
     <script>
@@ -48,7 +48,7 @@
       var button= document.getElementById("boton")
       button.addEventListener("click",function(e){
         e.preventDefault();
-        await socket.emit('chat message',"Me desconecto");
+        socket.emit('chat message',"Me desconecto");
         socket.close();
       })
     </script>
