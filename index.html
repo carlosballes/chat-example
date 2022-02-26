@@ -48,7 +48,7 @@
       var button= document.getElementById("boton")
       button.addEventListener("click",function(e){
         e.preventDefault();
-        socket.emit('chat message',"Me desconecto");
+        await socket.emit('chat message',"Me desconecto");
         socket.close();
       })
     </script>
