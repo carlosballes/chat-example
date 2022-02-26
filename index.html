@@ -46,10 +46,10 @@
       });
 
       var button= document.getElementById("boton")
-      button.addEventListener("click",async function(e){
+      button.addEventListener("click",function(e){
         e.preventDefault();
         socket.emit('chat',"Me desconecto");
-        await sleep(2000);
+        sleep(4000);
         cerrar();
       })
       function cerrar(){
