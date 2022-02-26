@@ -20,7 +20,7 @@
     <form id="form" action="">
       <input id="input" autocomplete="off" /><button>Send</button>
     </form>
-    <button>Close</button>
+    <button id="boton">Close</button>
     <script src="/socket.io/socket.io.js"></script>
 
     <script>
@@ -44,6 +44,13 @@
         messages.appendChild(item);
         window.scrollTo(0, document.body.scrollHeight);
       });
+
+      var button= document.getElementById("boton")
+      button.addEventListener("click",function(e){
+        e.preventDefault();
+        socket.emit('chat message',"Me desconecto");
+        socket.close();
+      })
     </script>
   </body>
 </html>
