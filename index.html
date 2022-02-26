@@ -17,10 +17,11 @@
   </head>
   <body>
     <ul id="messages"></ul>
+    <div id="ey"></div>
     <form id="form" action="">
       <input id="input" autocomplete="off" /><button>Send</button>
     </form>
-    <button id="boton">Close9</button>
+    <button id="boton">Close11</button>
     <script src="/socket.io/socket.io.js"></script>
 
     <script>
@@ -48,13 +49,9 @@
       var button= document.getElementById("boton")
       button.addEventListener("click",function(e){
         e.preventDefault();
-        socket.emit('chat',"Me desconecto");
-        sleep(4000);
-        cerrar();
-      })
-      function cerrar(){
+        document.getElementById("ey").value = "Chat deconectado"
         socket.close();
-      }
+      })
     </script>
   </body>
 </html>
