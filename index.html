@@ -17,7 +17,7 @@
   </head>
   <body>
     <div id="botones">
-      <button id="boton">Chat Off3</button>
+      <button id="boton">Chat Off4</button>
       <button id="abrir">Chat On</button>
     </div>
     <ul id="messages"></ul>
@@ -55,6 +55,7 @@
       button.addEventListener("click",function(e){
         e.preventDefault();
         document.getElementById("ey").style.visibility="visible";
+        document.getElementById("pipo").style.visibility="hidden";
         socket.close();
       })
 
@@ -62,6 +63,7 @@
       button.addEventListener("click",function(e){
         e.preventDefault();
         document.getElementById("pipo").style.visibility="visible";
+        document.getElementById("ey").style.visibility="hidden";
         socket.open();
       })
 
