@@ -17,7 +17,7 @@
   </head>
   <body>
     <div id="botones">
-      <button id="boton">Chat Off</button>
+      <button id="boton">Chat Off1</button>
       <button id="abrir">Chat On</button>
     </div>
     <ul id="messages"></ul>
@@ -62,7 +62,7 @@
       button.addEventListener("click",function(e){
         e.preventDefault();
         document.getElementById("pipo").textContent = "Chat encendido"
-        socket.close();
+        socket.open();
       })
 
     </script>
