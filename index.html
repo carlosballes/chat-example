@@ -17,12 +17,12 @@
   </head>
   <body>
     <div id="botones">
-      <button id="boton">Chat Off1</button>
+      <button id="boton">Chat Off2</button>
       <button id="abrir">Chat On</button>
     </div>
     <ul id="messages"></ul>
-    <div id="ey"></div>
-    <div id="pipo"></div>
+    <div id="ey" style="visibility: hidden;">Chat deconectado</div>
+    <div id="pipo" style="visibility: hidden;">Chat encendido</div>
     <form id="form" action="">
       <input id="input" autocomplete="off" /><button>Send</button>
     </form>
@@ -54,14 +54,14 @@
       var button= document.getElementById("boton")
       button.addEventListener("click",function(e){
         e.preventDefault();
-        document.getElementById("ey").textContent = "Chat deconectado"
+        document.getElementById("ey").style.visibility="visible"
         socket.close();
       })
 
       var button= document.getElementById("abrir")
       button.addEventListener("click",function(e){
         e.preventDefault();
-        document.getElementById("pipo").textContent = "Chat encendido"
+        document.getElementById("pipo").style.visibility="visible"
         socket.open();
       })
 
