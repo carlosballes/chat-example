@@ -14,12 +14,17 @@
       margin-left: 90%;
       display: flex;
       flex-direction: row;
+      position: fixed;
     }
-    #escri{
-      margin-left: 10%;
+
+    #escri {
+      margin-left: 90%;
       display: flex;
       flex-direction: row;
+      position: fixed;
+      align-self: flex-end;
     }
+
 
     #form {
       background: rgba(0, 0, 0, 0.15);
@@ -77,18 +82,22 @@
     <button id="boton">Chat Off</button>
     <button id="abrir">Chat On</button>
   </div>
+
   <ul id="messages"></ul>
   <div id="ey" style="visibility: hidden;">Chat deconectado</div>
   <div id="pipo" style="visibility: hidden;">Chat encendido</div>
   <form id="form" action="">
-    <input id="input" autocomplete="off" onchange="escribiendo()"  /><button>Send</button>
+
+    <input id="input" oninput="escribiendo()" autocomplete="off" /><button>Send</button>
   </form>
 
   <script src="/socket.io/socket.io.js"></script>
 
   <script>
     var socket = io();
-
+    var contador=0
+    var num = 1;
+    var estado = "";
     var messages = document.getElementById('messages');
     var form = document.getElementById('form');
     var input = document.getElementById('input');
@@ -98,12 +107,28 @@
       if (input.value) {
         socket.emit('chat message', input.value);
         input.value = '';
+        contador=0;
+        
       }
     });
 
     socket.on('chat message', function (msg) {
       var item = document.createElement('li');
+      var imagen = document.createElement('img');
+      if (num % 2 == 1) {
+        imagen.src = "https://www.lavanguardia.com/files/image_449_220/uploads/2022/03/26/623eb8c1bc934.jpeg";
+        imagen.style.width = "50px";
+        imagen.style.height = "50px";
+        imagen.style.borderRadius = "50%";
+      } else {
+        imagen.src = "https://www.webconsultas.com/sites/default/files/styles/wc_adaptive_curiosidad__small/public/articulos/perro-infecciones.jpg";
+        imagen.style.width = "50px";
+        imagen.style.height = "50px";
+        imagen.style.borderRadius = "50%";
+      }
+      num = num + 1;
       item.textContent = msg;
+      item.appendChild(imagen);
       messages.appendChild(item);
       window.scrollTo(0, document.body.scrollHeight);
     });
@@ -123,19 +148,25 @@
       document.getElementById("ey").style.visibility = "hidden";
       socket.open();
     })
+    
+    const escribiendo = () => {
+      
+      var newDiv = document.createElement("div");
+      var newContent = document.createTextNode("Escribiendo...");
+      newDiv.appendChild(newContent);
+      var currentDiv = document.getElementById("div1");
+      
+      if (input.value != "" && contador<1) {
+        if (currentDiv == null) {
+          document.body.insertBefore(newDiv, currentDiv);
+          contador=contador+1; 
+        }
+
+    }
+  }
 
   </script>
 
-  <script>
-    var img = document.createElement("img");
-    img.src = "Knuckles.png";
-    document.body.appendChild(img);
-
-    var img2 = document.createElement("img");
-    img2.src = "perro.png";
-    document.body.appendChild(img2);
-
-  </script>
 </body>
 
 </html>

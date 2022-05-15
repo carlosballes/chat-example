@@ -11,7 +11,7 @@ io.on('connection', (socket) => {
   socket.on('chat message', msg => {
     io.emit('chat message', msg);
   });
-  socket.on('chat', msg => {
+  socket.on('chat', msg => { 
     io.emit('chat', "Me desconecto");
   });
 });
